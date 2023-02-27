@@ -5,7 +5,6 @@ void main() {
   int qtdMasculino = 0;
   int qtdFeminino = 0;
 
-  // Leitura dos dados dos candidatos
   while (true) {
     print("Digite o código (FLAG'0000'):");
     String codigo = stdin.readLineSync()!;
@@ -26,7 +25,6 @@ void main() {
     print("Digite a pontuação (0-5000):");
     int pontuacao = int.parse(stdin.readLineSync()!);
 
-    // Armazenamento dos dados do candidato em um Map
     Map<String, dynamic> candidato = {
       "codigo": codigo,
       "curso": curso,
@@ -36,7 +34,6 @@ void main() {
     };
     candidatos.add(candidato);
 
-    // Contagem de candidatos por sexo
     if (sexo == "M") {
       qtdMasculino++;
     } else {
@@ -44,9 +41,7 @@ void main() {
     }
   }
 
-  // Impressão das informações desejadas
-
-  // a) O Código, nome e pontuação dos candidatos independentes do sexo para o curso de Ciência da Computação que fizeram mais de 2500 pontos.
+  // a)
   List<Map<String, dynamic>> a = candidatos
       .where((c) => c["curso"] == "CC" && c["pontuacao"] > 2500)
       .toList();
@@ -57,21 +52,21 @@ void main() {
         "Código: ${candidato["codigo"]}, Nome: ${candidato["nome"]}, Pontuação: ${candidato["pontuacao"]}");
   }
 
-  // b) O nome do candidato do sexo masculino que teve a menor pontuação geral
+  // b)
   Map<String, dynamic>? b = candidatos
       .where((c) => c["sexo"] == "M")
       .reduce((c1, c2) => c1["pontuacao"] < c2["pontuacao"] ? c1 : c2);
   print(
       "\nNome do candidato do sexo masculino com menor pontuação geral: ${b["nome"]}");
 
-  // c) O código do candidato do sexo masculino que teve a maior pontuação para o curso de Sistemas de Informação
+  // c)
   Map<String, dynamic>? c = candidatos
       .where((c) => c["curso"] == "SI" && c["sexo"] == "M")
       .reduce((c1, c2) => c1["pontuacao"] > c2["pontuacao"] ? c1 : c2);
   print(
       "\nCódigo do candidato do sexo masculino com maior pontuação no curso de Sistemas de Informação: ${c["codigo"]}");
 
-  // d) O percentual geral de candidatos do sexo Masculino e Feminino inscritos no vestibular
+  // d)
   double percMasculino = qtdMasculino / (qtdMasculino + qtdFeminino) * 100;
   double percFeminino = qtdFeminino / (qtdMasculino + qtdFeminino) * 100;
   print("\nPercentual de candidatos inscritos por sexo:");

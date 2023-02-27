@@ -1,26 +1,21 @@
 import 'dart:io';
 
 void main() {
-  // leitura do tamanho e dos elementos dos 4 vetores
   List<int> vetor1 = lerVetor();
   List<int> vetor2 = lerVetor();
   List<int> vetor3 = lerVetor();
   List<int> vetor4 = lerVetor();
 
-  // união dos valores dos 4 vetores
   List<int> vetor5 = []
     ..addAll(vetor1)
     ..addAll(vetor2)
     ..addAll(vetor3)
     ..addAll(vetor4);
 
-  // ordenação do vetor resultante
   vetor5.sort();
 
-  // impressão do vetor resultante ordenado
   print("Vetor resultante ordenado: $vetor5");
 
-  // intercessão dos elementos dos 4 vetores
   List<int> intercessao = [];
   for (int i = 0; i < vetor1.length; i++) {
     int elemento = vetor1[i];
@@ -31,7 +26,6 @@ void main() {
     }
   }
 
-  // impressão do vetor de intercessão
   print("Vetor de intercessão: $intercessao");
 }
 

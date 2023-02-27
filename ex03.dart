@@ -27,7 +27,6 @@ void main() {
     256
   ];
 
-  // Imprime a série na tela
   for (int i = 0; i < s.length; i++) {
     print(s[i]);
   }
